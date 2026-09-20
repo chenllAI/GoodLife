@@ -1,0 +1,59 @@
+name: 部署到 GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    # ⚠️ 这一条是必须的，不是优化。
+    #
+    # 应用把数据写在同一个仓库的 data/ 目录下，而**每记一笔家务就是一次提交**。
+    # 如果没有这个过滤，每记一笔家务都会触发一次完整的构建 + 部署 ——
+    # GitHub Pages 免费版每小时只允许约 10 次，一个忙碌的晚上就能把额度打爆，
+    # 之后连正常的代码更新都部署不上去。
+    paths-ignore:
+      - 'data/**'
+      - '**/*.md'
+      - '.gitignore'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一个部署；新的推送取消排队中的旧任务
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: 安装依赖
+        run: npm ci
+
+      - name: 自测（类型检查 + 单元测试 + 构建 + 产物检查）
+        run: npm run verify
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

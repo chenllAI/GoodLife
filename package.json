@@ -1,0 +1,37 @@
+{
+  "name": "family-chore-leaderboard",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "家庭家务积分榜 — 小良 & 小影",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:build": "node scripts/check-build.mjs",
+    "smoke": "node scripts/smoke-preview.mjs",
+    "verify": "npm run typecheck && npm run test && npm run build && npm run check:build"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "jsdom": "^29.1.1",
+    "puppeteer-core": "^25.11.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  }
+}

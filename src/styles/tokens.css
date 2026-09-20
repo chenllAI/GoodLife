@@ -1,0 +1,124 @@
+/**
+ * 设计令牌
+ *
+ * 配色不是凭感觉挑的，是跑 dataviz 校验器验证过的：
+ *
+ *   成员系列色（蓝/橙）
+ *     node scripts/validate_palette.js "#2a78d6,#eb6834" --mode light --surface "#FFF7ED"
+ *     → 全项 PASS（色盲可辨 ΔE 24.7 protan / 32.7 tritan，正常视觉 33.6，对比度均 ≥3:1）
+ *
+ *   热力图顺序色阶（5 档离散）
+ *     node scripts/validate_palette.js "#6da7ec,#3987e5,#256abf,#184f95,#0d366b" \
+ *          --ordinal --surface "#FFF7ED"
+ *     → 全项 PASS（亮度单调、档间差 ≥0.06、最浅档 2.36:1 高于 2:1 底线、单一色相）
+ *
+ * 两条纪律：
+ *   1. **颜色跟随「人」而不是「名次」。** 小影反超时她的条形仍是橙色，变的只是皇冠
+ *      图标。所以这两个色值绑定在成员身上，绝不按排名重新分配。
+ *   2. **粉色只用于装饰**（按钮、背景晕染），不承担任何数据编码 —— 它在暖色底上的
+ *      对比度不达标，用来编码数据会让色弱用户读不出来。
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---- 表面 ---- */
+  --surface-page: #fff7ed;
+  --surface-card: #fffdf9;
+  --surface-sunken: #fdf1e0;
+  --surface-raised: #ffffff;
+
+  /* ---- 文字 ---- */
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-muted: #a8a29e;
+  --text-on-accent: #ffffff;
+
+  /* ---- 线条（实线细线，不用虚线）---- */
+  --line-grid: #efe7dc;
+  --line-base: #d6cfc4;
+  --line-card: #f2e8db;
+
+  /* ---- 成员系列色（已验证）---- */
+  --series-1: #2a78d6; /* 小良 · 蓝 */
+  --series-2: #eb6834; /* 小影 · 橙 */
+  --series-1-soft: #e3edfa;
+  --series-2-soft: #fdeade;
+  --series-1-deep: #1c5cab;
+  --series-2-deep: #b8481c;
+
+  /* ---- 顺序色阶：热力图 5 档（已验证）---- */
+  --seq-0: #f3ece1; /* 无记录 = 接近底色 */
+  --seq-1: #6da7ec;
+  --seq-2: #3987e5;
+  --seq-3: #256abf;
+  --seq-4: #184f95;
+  --seq-5: #0d366b;
+
+  /* ---- 装饰（不编码数据）---- */
+  --decor-pink: #f9a8c0;
+  --decor-pink-soft: #fde8ee;
+  --decor-gold: #f0b429;
+  --decor-gold-soft: #fdf0d5;
+  --decor-mint: #7fd1ae;
+  --decor-lilac: #c4b5fd;
+
+  /* ---- 状态 ---- */
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-critical: #d03b3b;
+
+  /* ---- 圆角 ---- */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ---- 阴影：暖色调，不用纯黑 ---- */
+  --shadow-sm: 0 1px 2px rgba(120, 83, 45, 0.06);
+  --shadow-md: 0 2px 8px rgba(120, 83, 45, 0.08);
+  --shadow-lg: 0 8px 24px rgba(120, 83, 45, 0.1);
+  --shadow-pop: 0 12px 32px rgba(120, 83, 45, 0.16);
+
+  /* ---- 间距 ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* ---- 字号 ---- */
+  --fs-hero: 44px;
+  --fs-xl: 26px;
+  --fs-lg: 19px;
+  --fs-md: 16px;
+  --fs-sm: 14px;
+  --fs-xs: 12px;
+
+  /* ---- 动效 ---- */
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- 布局 ---- */
+  --app-max-width: 480px;
+  --tabbar-height: 62px;
+}
+
+/* 尊重系统的「减少动态效果」设置 —— 前庭失调用户会因弹跳动画不适 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ease-pop: linear;
+    --ease-out: linear;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,2 @@
+#!/bin/sh
+# 阻止 GitHub Pages 运行 Jekyll —— 否则某些构建产物目录会被忽略

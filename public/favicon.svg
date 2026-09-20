@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- 家务积分榜图标：暖色底 + 扫帚 + 星星，和应用的暖色游戏风一致 -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE7C7"/>
+      <stop offset="1" stop-color="#FFD0A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <!-- 扫帚柄 -->
+  <rect x="29.5" y="10" width="5" height="30" rx="2.5" fill="#B4794A"/>
+  <!-- 扫帚头 -->
+  <path d="M20 38 h24 l-3 13 h-18 z" fill="#F0B429"/>
+  <path d="M23 38 h4 v13 h-4 z M30 38 h4 v13 h-4 z M37 38 h4 v13 h-4 z" fill="#D99A16" opacity="0.75"/>
+  <!-- 星星 -->
+  <path d="M47 13 l2.2 4.7 5.1.7-3.7 3.6.9 5.1-4.5-2.4-4.5 2.4.9-5.1-3.7-3.6 5.1-.7z" fill="#EB6834"/>
+</svg>
