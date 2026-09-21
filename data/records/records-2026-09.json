@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "month": "2026-09",
+  "records": [
+    {
+      "id": "152eb270-b788-43ae-86f8-9878b736b437",
+      "memberId": "member-xiaoliang",
+      "choreId": "preset-take-out-trash",
+      "choreName": "倒垃圾",
+      "choreEmoji": "🗑️",
+      "category": "清洁打扫",
+      "difficulty": 1,
+      "points": 2,
+      "at": "2026-09-21T00:55:23.622Z",
+      "day": "2026-09-21",
+      "createdBy": "236de57c-e571-4d21-8894-326f990a8a3e",
+      "createdAt": "2026-09-21T00:55:23.622Z",
+      "updatedAt": "2026-09-21T00:55:23.622Z"
+    }
+  ]
+}
