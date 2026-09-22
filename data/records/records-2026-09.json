@@ -31,6 +31,21 @@
       "createdBy": "236de57c-e571-4d21-8894-326f990a8a3e",
       "createdAt": "2026-09-22T00:41:19.499Z",
       "updatedAt": "2026-09-22T00:41:19.499Z"
+    },
+    {
+      "id": "b81bc7ce-c201-4e2b-af6f-ac03121facdd",
+      "memberId": "member-xiaoliang",
+      "choreId": "preset-cook-meal",
+      "choreName": "做饭炒菜",
+      "choreEmoji": "🍳",
+      "category": "厨房餐食",
+      "difficulty": 4,
+      "points": 7,
+      "at": "2026-09-22T00:42:33.962Z",
+      "day": "2026-09-22",
+      "createdBy": "6c7b6762-09d2-4269-8e91-4988eca9f0c6",
+      "createdAt": "2026-09-22T00:42:33.962Z",
+      "updatedAt": "2026-09-22T00:42:33.962Z"
     }
   ]
 }
